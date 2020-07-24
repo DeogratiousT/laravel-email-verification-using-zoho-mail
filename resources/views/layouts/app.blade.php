@@ -49,6 +49,9 @@
                                 </li>
                             @endif
                         @else
+                            <li class="mt-1">
+                                <p class="dropdown-item">{{ Auth::user()->role->name }}</p>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -73,6 +76,11 @@
         </nav>
 
         <main class="py-4">
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
             @yield('content')
         </main>
     </div>
